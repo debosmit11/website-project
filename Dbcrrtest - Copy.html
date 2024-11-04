@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBCRR</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #008080;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+        }
+
+        form input, form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background: #5cb85c;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4cae4c;
+        }
+
+        .team-member, .novel-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-member img, .novel-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .novel-item img {
+            border-radius: 5px;
+        }
+
+        .social-media {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: #008080;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #008080;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+            .team-member img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        .movie-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .movie-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        
+        .genre-dropdown {
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                alert('Thank you for your message!');
+                this.reset();
+            });
+        });
+         document.getElementById('genre-select').addEventListener('change', function() {
+                const selectedGenre = this.value;
+                const movieItems = document.querySelectorAll('.movie-item');
+                movieItems.forEach(item => {
+                    if (selectedGenre === 'all' || item.dataset.genre === selectedGenre) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+<img src="https://drive.google.com/thumbnail?id=1H2Z93Ebd9I40GQYXFCnJJrlnkmyiSV2F" alt="DBCRR">
+        <h1>DBCRR</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#novels">Novels</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#coming-soon">Coming Soon</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to DBCRR Studios, where imagination meets innovation in the world of storytelling. Founded by a team of passionate creatives with a shared love for the written word, we specialize in crafting compelling scripts for movies, TV shows, and novels that captivate audiences and spark conversations.</p>
+<p>
+At DBCRR Studios, we believe that every great story begins with a unique voice and a bold vision. Our dedicated writers draw inspiration from diverse experiences and genres, blending artistry with strategy to create narratives that resonate deeply with viewers and readers alike. From thrilling dramas to heartwarming tales, we explore the full spectrum of human emotion and endeavor to push the boundaries of conventional storytelling.
+</p><p>
+Our commitment to excellence doesn’t stop at storytelling; we pride ourselves on collaboration. We work closely with clients to understand their goals, ensuring a seamless process from concept to final draft. Whether you’re a filmmaker seeking a riveting screenplay, a producer looking for a captivating TV series, or an author ready to embark on a novel journey, DBCRR Studios is your go-to partner in bringing stories to life.
+</p><p>
+Join us as we explore the limitless possibilities of creative writing, one script at a time. Together, let’s turn your vision into a compelling narrative that transcends the page and screen.
+</p><p>
+DBCRR Studios - Crafting Stories, Creating Realities.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <section id="team">
+        <h2>Our Team</h2>
+        <div class="team-member">
+            <img src="https://drive.google.com/thumbnail?id=14o5gwaSirwNoID8JXGrgOGjefmxS_qB6" alt="Debosmit Choudhary">
+            <div>
+                <h3>Debosmit Choudhary</h3>
+                <p>Director/novelist</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="https://drive.google.com/thumbnail?id=14q8X-dmJNLp2yTJkY4fs9Oyk8Jpgtn-2" alt="Aaishani Choudhary">
+            <div>
+                <h3>Aaishani Choudhary</h3>
+                <p>Producer/writer</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src= "https://drive.google.com/thumbnail?id=14o5gwaSirwNoID8JXGrgOGjefmxS_qB6"alt="Janmejay Mishra">
+            <div>
+                <h3>Janmejay Misra</h3>
+                <p>Director/editor</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="https://drive.google.com/thumbnail?id=14bOSK4eIj46UftlXKiXZ8eYmPa08X5xg" alt="Aritro Bhattacharjee">
+            <div>
+                <h3>Aritro Bhattacharya</h3>
+                <p>Trainee Actor</p>
+            </div>
+        </div>
+        <div class="team-member">
+            <img src="https://drive.google.com/thumbnail?id=14bOSK4eIj46UftlXKiXZ8eYmPa08X5xg" alt="Adrito Bhattacharjee">
+            <div>
+                <h3>Adrito Bhattacharya</h3>
+                <p>Trainee Actor</p>
+            </div>
+        </div>
+    </section>
+     
+    <section id="movies">
+        <h2>Movie Listings</h2>
+        <div class="genre-dropdown">
+            <label for="genre-select">Select Genre:</label>
+            <select id="genre-select">
+                <option value="all">All</option>
+                <option value="horror">Horror</option>
+                <option value="action">Action</option>
+                <option value="thriller">Thriller</option>
+                <option value="mystery">Mystery</option>
+                <option value="fantasy">Fantasy</option>
+            </select>
+        </div>
+
+        <section class="movie-item" data-genre="horror">
+            <img src="https://drive.google.com/thumbnail?id=1DLQY8H8nPy5v6QK3aXJ5wRNR4HDxKAdl" alt="Horror Movie">
+            <div>
+                <h3>Horror Movie Title</h3>
+                <p>A chilling story that will keep you on the edge of your seat...</p>
+            </div>
+        </section>
+
+        <section class="movie-item" data-genre="action">
+            <img src="https://drive.google.com/thumbnail?id=1DLQY8H8nPy5v6QK3aXJ5wRNR4HDxKAdl" alt="Action Movie">
+            <div>
+                <h3>Action Movie Title</h3>
+                <p>An adrenaline-pumping adventure filled with thrilling stunts...</p>
+            </div>
+        </section>
+
+        <section class="movie-item" data-genre="thriller">
+            <img src="https://drive.google.com/thumbnail?id=1DLQY8H8nPy5v6QK3aXJ5wRNR4HDxKAdl" alt="Thriller Movie">
+            <div>
+                <h3>Thriller Movie Title</h3>
+                <p>A suspenseful tale of mystery and deception...</p>
+            </div>
+        </section>
+
+    <section id="novels">
+        <h2>Novel Listings</h2>
+
+        <section class="novel-item">
+            <img src="https://drive.google.com/thumbnail?id=14dzk7h46_3baOqMeJYFknCBe9jv5ib9M" alt="Ballad of Orc Paladin">
+            <div>
+                <h3>Ballad of Orc Paladin</h3>
+                <p>Extraordinary adventure of Kaito as he journeys through a fantasy world of sword and magic while facing the challenges of being an orc.</p>
+<a href="https://drive.google.com/file/d/14tw163xKFKyNaRoOPC1vVwka7BRncXk8/view?usp=sharing" download="theworldbeyond">Ballad of the orc paladin pdf download</a>
+            </div>
+        </section>
+
+        <section class="novel-item">
+            <img src="https://drive.google.com/thumbnail?id=14dzk7h46_3baOqMeJYFknCBe9jv5ib9M" alt="The World Beyond">
+            <div>
+                <h3>The World Beyond</h3>
+                <p>In a world teetering on the brink of darkness, Ethan, an unsuspecting hero from another realm, finds himself thrust into a battle against the malevolent Shadowborn...</p>
+<a href="https://drive.google.com/file/d/1epkKbwtTIcRNLSRa3yW23dZbG61Zd7Tf/view?usp=drive_link" download="theworldbeyond">the world beyond pdf download</a>
+            </div>
+        </section>
+
+    </section>
+
+    <section id="coming-soon">
+        <h2>Coming Soon</h2>
+        <div class="novel-item">
+            <img src="https://drive.google.com/thumbnail?id=14dzk7h46_3baOqMeJYFknCBe9jv5ib9M" alt="Nobody">
+            <div>
+                <h3>Nobody</h3>
+                <p>The mystery thriller about an ordinary high school kid Fredrick and his secret hobby.</p>
+            </div>
+        </div>
+        <p>Stay tuned for our upcoming projects!</p>
+    </section>
+
+    <section class="social-media">
+        <h2>Follow Us</h2>
+        <a href="#" target="_blank">📘</a>
+        <a href="#" target="_blank">🐦</a>
+        <a href="#" target="_blank">📸</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 DBCRR. All rights reserved.</p>
+    </footer>
+</body>
+</html>
