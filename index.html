@@ -101,18 +101,40 @@ nav li {
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  align-items: stretch; /* Ensure all cards fill the grid row height */
 }
-
+@media (max-width: 900px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .movie-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   background-color: #1b263b;
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  height: 100%; /* Fill grid cell */
 }
-
+.movie-card img {
+  width: 100%;
+  height: auto; /* Let image keep its aspect ratio */
+  max-height: 340px; /* Optional: limit height for consistency */
+  object-fit: contain; /* Show full poster, no cropping */
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 /* Base Setup */
 body {
   margin: 0;
@@ -165,15 +187,6 @@ footer {
     }
   }
 
-  /* Responsive Images */
-  .movie-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 0.8rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
 </style>
 <!-- Movie Thumbnails Modal (hidden by default) -->
 <style>
@@ -262,8 +275,8 @@ footer {
     <li><a href="#contact" style="color:inherit;text-decoration:none;">Contact</a></li>
     </ul>
     <div class="search-bar">
-      <input type="text" placeholder="Search movies..." />
-      <button>Search</button>
+      <input type="text" id="searchInput" placeholder="Search movies..." />
+      <button id="searchBtn">Search</button>
     </div>
   </nav>
 </header>
@@ -273,20 +286,24 @@ footer {
   <h2>Thriller</h2>
   <div class="movie-grid">
     <div class="movie-card">
+      <img src="images/thriller1.png" alt="A PLACE IN THE DARK Poster" />
       <i class="fas fa-mask fa-2x" style="color:#ff6b6b;margin-bottom:0.5rem;"></i>
-      <div>Thriller Movie 1</div>
+      <div>A PLACE IN THE DARK</div>
     </div>
     <div class="movie-card">
+      <img src="images/thriller2.png" alt="THE SUSPECT Poster" />
       <i class="fas fa-user-secret fa-2x" style="color:#ffa69e;margin-bottom:0.5rem;"></i>
-      <div>Thriller Movie 2</div>
+      <div>THE SUSPECT</div>
     </div>
     <div class="movie-card">
+      <img src="images/thriller3.png" alt="WITNESS TO THE CRIME Poster" />
       <i class="fas fa-skull-crossbones fa-2x" style="color:#adb5bd;margin-bottom:0.5rem;"></i>
-      <div>Thriller Movie 3</div>
+      <div>WITNESS TO THE CRIME</div>
     </div>
     <div class="movie-card">
+      <img src="images/thriller4.png" alt="BREAKING POINT Poster" />
       <i class="fas fa-eye fa-2x" style="color:#4ea8de;margin-bottom:0.5rem;"></i>
-      <div>Thriller Movie 4</div>
+      <div>BREAKING POINT</div>
     </div>
   </div>
 </section>
@@ -295,20 +312,24 @@ footer {
   <h2>Mystery</h2>
   <div class="movie-grid">
     <div class="movie-card">
+      <img src="images/mystery1.png" alt="THE SILENT WITNESS Poster" />
       <i class="fas fa-question-circle fa-2x" style="color:#ffa69e;margin-bottom:0.5rem;"></i>
-      <div>Mystery Movie 1</div>
+      <div>THE SILENT WITNESS</div>
     </div>
     <div class="movie-card">
+      <img src="images/mystery2.png" alt="WISPERS IN THE DARK Poster" />
       <i class="fas fa-search fa-2x" style="color:#ff6b6b;margin-bottom:0.5rem;"></i>
-      <div>Mystery Movie 2</div>
+      <div>WISPERS IN THE DARK</div>
     </div>
     <div class="movie-card">
+      <img src="images/mystery3.png" alt="THE UNSEEN HAND Poster" />
       <i class="fas fa-user-ninja fa-2x" style="color:#adb5bd;margin-bottom:0.5rem;"></i>
-      <div>Mystery Movie 3</div>
+      <div>THE UNSEEN HAND</div>
     </div>
     <div class="movie-card">
+      <img src="images/mystery4.png" alt="ECHOES OF DOUBT Poster" />
       <i class="fas fa-fingerprint fa-2x" style="color:#4ea8de;margin-bottom:0.5rem;"></i>
-      <div>Mystery Movie 4</div>
+      <div>ECHOES OF DOUBT</div>
     </div>
   </div>
 </section>
@@ -317,20 +338,24 @@ footer {
   <h2>Action</h2>
   <div class="movie-grid">
     <div class="movie-card">
+      <img src="images/action1.png" alt="URBAN FURY Poster" />
       <i class="fas fa-bolt fa-2x" style="color:#ff6b6b;margin-bottom:0.5rem;"></i>
-      <div>Action Movie 1</div>
+      <div>URBAN FURY</div>
     </div>
     <div class="movie-card">
+      <img src="images/action2.png" alt="HIGH STAKES HEIST Poster" />
       <i class="fas fa-fist-raised fa-2x" style="color:#ffa69e;margin-bottom:0.5rem;"></i>
-      <div>Action Movie 2</div>
+      <div>HIGH STAKES HEIST</div>
     </div>
     <div class="movie-card">
+      <img src="images/action3.png" alt="ARCTIC PURSUIT Poster" />
       <i class="fas fa-fire fa-2x" style="color:#adb5bd;margin-bottom:0.5rem;"></i>
-      <div>Action Movie 3</div>
+      <div>ARCTIC PURSUIT</div>
     </div>
     <div class="movie-card">
+      <img src="images/action4.png" alt="ROGUE AGENT Poster" />
       <i class="fas fa-running fa-2x" style="color:#4ea8de;margin-bottom:0.5rem;"></i>
-      <div>Action Movie 4</div>
+      <div>ROGUE AGENT</div>
     </div>
   </div>
 </section>
@@ -339,20 +364,24 @@ footer {
   <h2>Horror</h2>
   <div class="movie-grid">
     <div class="movie-card">
+      <img src="images/horror1.png" alt="THE SILENT SCREAM Poster" />
       <i class="fas fa-ghost fa-2x" style="color:#ff6b6b;margin-bottom:0.5rem;"></i>
-      <div>Horror Movie 1</div>
+      <div>THE SILENT SCREAM</div>
     </div>
     <div class="movie-card">
+      <img src="images/horror2.png" alt="SHADOWS OF THE PAST Poster" />
       <i class="fas fa-skull fa-2x" style="color:#ffa69e;margin-bottom:0.5rem;"></i>
-      <div>Horror Movie 2</div>
+      <div>SHADOWS OF THE PAST</div>
     </div>
     <div class="movie-card">
+      <img src="images/horror3.png" alt="THE CURSED DOLLHOUSE Poster" />
       <i class="fas fa-spider fa-2x" style="color:#adb5bd;margin-bottom:0.5rem;"></i>
-      <div>Horror Movie 3</div>
+      <div>THE CURSED DOLLHOUSE</div>
     </div>
     <div class="movie-card">
+      <img src="images/horror4.png" alt="WISPERS IN THE WOODS Poster" />
       <i class="fas fa-biohazard fa-2x" style="color:#4ea8de;margin-bottom:0.5rem;"></i>
-      <div>Horror Movie 4</div>
+      <div>WISPERS IN THE WOODS</div>
     </div>
   </div>
 </section>
@@ -360,106 +389,108 @@ footer {
   <h2>Featured Movies</h2>
   <div class="movie-grid">
     <div class="movie-card">
+      <img src="images/feature1.png" alt="CHRONOS DRIFT Poster" />
       <i class="fas fa-star fa-2x" style="color:#ff6b6b;margin-bottom:0.5rem;"></i>
-      <div>Featured Movie 1</div>
+      <div>CHRONOS DRIFT</div>
     </div>
     <div class="movie-card">
+      <img src="images/feature2.png" alt="THE CRYSTAL LABYRINTH Poster" />
       <i class="fas fa-film fa-2x" style="color:#ffa69e;margin-bottom:0.5rem;"></i>
-      <div>Featured Movie 2</div>
+      <div>THE CRYSTAL LABYRINTH</div>
     </div>
     <div class="movie-card">
+      <img src="images/feature3.png" alt="LOVE BYTES AND BEYOND Poster" />
       <i class="fas fa-trophy fa-2x" style="color:#adb5bd;margin-bottom:0.5rem;"></i>
-      <div>Featured Movie 3</div>
+      <div>LOVE BYTES AND BEYOND</div>
     </div>
     <div class="movie-card">
+      <img src="images/feature4.png" alt="THE CROWN OF THORNS Poster" />
       <i class="fas fa-medal fa-2x" style="color:#4ea8de;margin-bottom:0.5rem;"></i>
-      <div>Featured Movie 4</div>
+      <div>THE CROWN OF THORNS</div>
     </div>
   </div>
 </section>
-<!-- ...existing code... -->
-<!-- Add this script before </body> -->
 <script>
 // Movie data for modal (add more details as needed)
 const movieDetails = {
-  "Thriller Movie 1": {
-    img: "https://via.placeholder.com/320x400?text=Thriller+1",
+  "A PLACE IN THE DARK": {
+    img: "images/thriller1.png",
     desc: "A suspenseful thriller that keeps you on the edge of your seat.",
   },
-  "Thriller Movie 2": {
-    img: "https://via.placeholder.com/320x400?text=Thriller+2",
+  "THE SUSPECT": {
+    img: "images/thriller2.png",
     desc: "A dark and mysterious thriller with unexpected twists.",
   },
-  "Thriller Movie 3": {
-    img: "https://via.placeholder.com/320x400?text=Thriller+3",
+  "WITNESS TO THE CRIME": {
+    img: "images/thriller3.png",
     desc: "A psychological thriller that will blow your mind.",
   },
-  "Thriller Movie 4": {
-    img: "https://via.placeholder.com/320x400?text=Thriller+4",
+  "BREAKING POINT": {
+    img: "images/thriller4.png",
     desc: "A fast-paced thriller with non-stop action.",
   },
-  "Mystery Movie 1": {
-    img: "https://via.placeholder.com/320x400?text=Mystery+1",
+  "THE SILENT WITNESS": {
+    img: "images/mystery1.png",
     desc: "A classic whodunit with a modern twist.",
   },
-  "Mystery Movie 2": {
-    img: "https://via.placeholder.com/320x400?text=Mystery+2",
+  "WISPERS IN THE DARK": {
+    img: "images/mystery2.png",
     desc: "Unravel the secrets in this gripping mystery.",
   },
-  "Mystery Movie 3": {
-    img: "https://via.placeholder.com/320x400?text=Mystery+3",
+  "THE UNSEEN HAND": {
+    img: "images/mystery3.png",
     desc: "A detective story full of intrigue.",
   },
-  "Mystery Movie 4": {
-    img: "https://via.placeholder.com/320x400?text=Mystery+4",
+  "ECHOES OF DOUBT": {
+    img: "images/mystery4.png",
     desc: "A mysterious journey with unexpected turns.",
   },
-  "Action Movie 1": {
-    img: "https://via.placeholder.com/320x400?text=Action+1",
+  "URBAN FURY": {
+    img: "images/action1.png",
     desc: "High-octane action and breathtaking stunts.",
   },
-  "Action Movie 2": {
-    img: "https://via.placeholder.com/320x400?text=Action+2",
+  "HIGH STAKES HEIST": {
+    img: "images/action2.png",
     desc: "Explosive action and thrilling chases.",
   },
-  "Action Movie 3": {
-    img: "https://via.placeholder.com/320x400?text=Action+3",
+  "ARCTIC PURSUIT": {
+    img: "images/action3.png",
     desc: "A hero rises in this action-packed adventure.",
   },
-  "Action Movie 4": {
-    img: "https://via.placeholder.com/320x400?text=Action+4",
+  "ROGUE AGENT": {
+    img: "images/action4.png",
     desc: "Non-stop action from start to finish.",
   },
-  "Horror Movie 1": {
-    img: "https://via.placeholder.com/320x400?text=Horror+1",
+  "THE SILENT SCREAM": {
+    img: "images/horror1.png",
     desc: "A chilling horror story that will haunt your dreams.",
   },
-  "Horror Movie 2": {
-    img: "https://via.placeholder.com/320x400?text=Horror+2",
+  "SHADOWS OF THE PAST": {
+    img: "images/horror2.png",
     desc: "Face your fears in this terrifying horror film.",
   },
-  "Horror Movie 3": {
-    img: "https://via.placeholder.com/320x400?text=Horror+3",
+  "THE CURSED DOLLHOUSE": {
+    img: "images/horror3.png",
     desc: "A supernatural horror with spine-tingling moments.",
   },
-  "Horror Movie 4": {
-    img: "https://via.placeholder.com/320x400?text=Horror+4",
+  "WISPERS IN THE WOODS": {
+    img: "images/horror4.png",
     desc: "A nightmare brought to life on screen.",
   },
-  "Featured Movie 1": {
-    img: "https://via.placeholder.com/320x400?text=Featured+1",
+  "CHRONOS DRIFT": {
+    img: "images/feature1.png",
     desc: "A featured blockbuster you can't miss.",
   },
-  "Featured Movie 2": {
-    img: "https://via.placeholder.com/320x400?text=Featured+2",
+  "THE CRYSTAL LABYRINTH": {
+    img: "images/feature2.png",
     desc: "Award-winning featured film with a star cast.",
   },
-  "Featured Movie 3": {
-    img: "https://via.placeholder.com/320x400?text=Featured+3",
+  "LOVE BYTES AND BEYOND": {
+    img: "images/feature3.png",
     desc: "A critically acclaimed featured movie.",
   },
-  "Featured Movie 4": {
-    img: "https://via.placeholder.com/320x400?text=Featured+4",
+  "THE CROWN OF THORNS": {
+    img: "images/feature4.png",
     desc: "A featured film that defines a generation.",
   }
 };
@@ -545,7 +576,65 @@ document.querySelectorAll('.movie-card').forEach(card => {
   </div>
   <p style="color:#adb5bd;text-align:center;margin-top:1.5rem;">Stay tuned for our upcoming projects!</p>
 </section>
+<script>
+// Search function for any name within the website (movies, novels, team, etc.)
+document.getElementById('searchBtn').onclick = function() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  let found = false;
 
+  // Remove previous highlights and no-match message
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    el.classList.remove('search-highlight');
+  });
+  const prevNoMatch = document.getElementById('noMatchMsg');
+  if (prevNoMatch) prevNoMatch.remove();
+
+  if (!query) return;
+
+  // Search in movie, novel, and team cards
+  const selectors = [
+    '.movie-card div:last-child', // Movie titles
+    '.novel-card h3',             // Novel titles
+    '.team-card h3'               // Team member names
+  ];
+  selectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      if (el.textContent.toLowerCase().includes(query)) {
+        el.classList.add('search-highlight');
+        found = true;
+        // Scroll to first match
+        el.scrollIntoView({behavior: 'smooth', block: 'center'});
+      }
+    });
+  });
+
+  // If no match found, show a message
+  if (!found) {
+    const msg = document.createElement('div');
+    msg.id = 'noMatchMsg';
+    msg.textContent = '🔍 No match found';
+    msg.style.color = '#ff6b6b';
+    msg.style.textAlign = 'center';
+    msg.style.margin = '1rem 0';
+    document.querySelector('body').insertBefore(msg, document.body.firstChild.nextSibling);
+  }
+};
+
+// Optional: highlight style
+const style = document.createElement('style');
+style.textContent = `
+  .search-highlight {
+    background: #ffa69e;
+    color: #0d1b2a !important;
+    border-radius: 4px;
+    padding: 0.1em 0.3em;
+    transition: background 0.2s;
+  }
+`;
+document.head.appendChild(style);
+
+// ...existing code...
+</script>
 <footer></footer>
 <section id="home" style="padding:2rem 0;text-align:center;">
   <i class="fas fa-house fa-3x" style="color:#ff6b6b;"></i>
@@ -609,6 +698,6 @@ DBCRR Studios - Crafting Stories, Creating Realities.</p>
     <a href="#" style="color:#ffa69e;"><i class="fab fa-twitter"></i></a>
     <a href="#" style="color:#ffa69e;"><i class="fab fa-instagram"></i></a>
   </div>
-  <p>&copy; 2023 DBCRR Productions. All rights reserved.</p>
+  <p>&copy; 2025 DBCRR Productions. All rights reserved.</p>
 </footer>
 </html>
